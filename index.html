@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velorix</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f0f0f;
+color:white;
+}
+
+header{
+background:#111;
+text-align:center;
+padding:30px;
+border-bottom:1px solid #222;
+}
+
+header h1{
+color:#00bfff;
+font-size:55px;
+}
+
+nav{
+display:flex;
+justify-content:center;
+gap:20px;
+padding:15px;
+background:#121212;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+nav a{
+color:white;
+cursor:pointer;
+font-weight:bold;
+}
+
+.page{
+display:none;
+padding:30px;
+}
+
+.active{
+display:block;
+}
+
+/* HOME */
+.hero{
+text-align:center;
+padding:50px 20px;
+}
+
+.hero img{
+width:100%;
+max-width:700px;
+border-radius:15px;
+margin-bottom:20px;
+}
+
+.hero h2{
+color:#00bfff;
+font-size:45px;
+}
+
+.hero p{
+color:#ccc;
+margin-top:10px;
+max-width:600px;
+margin-left:auto;
+margin-right:auto;
+}
+
+.offer-btn{
+background:#ff3b3b;
+padding:12px 18px;
+border:none;
+border-radius:10px;
+color:white;
+font-weight:bold;
+cursor:pointer;
+margin-top:20px;
+}
+
+/* EBOOKS */
+.cards{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+}
+
+.card{
+background:#1a1a1a;
+width:300px;
+padding:15px;
+border-radius:15px;
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.price{
+color:#00ff99;
+font-size:20px;
+display:block;
+margin:10px 0;
+}
+
+button{
+width:100%;
+padding:10px;
+border:none;
+border-radius:10px;
+background:#00bfff;
+color:white;
+cursor:pointer;
+margin-top:10px;
+font-weight:bold;
+}
+
+input,textarea{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:none;
+border-radius:10px;
+background:#222;
+color:white;
+}
+
+/* MINI */
+.extrait{
+background:#151515;
+padding:15px;
+margin:10px;
+border-radius:10px;
+}
+
+.extrait img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+.mini-price{
+color:#00ff99;
+font-size:18px;
+margin-top:5px;
+font-weight:bold;
+}
+
+/* SUB ADMIN */
+.sub-box{
+background:#151515;
+padding:15px;
+border-radius:10px;
+margin-top:20px;
+}
+
+.sub-item{
+background:#222;
+padding:10px;
+border-radius:8px;
+margin-top:10px;
+}
+
+/* CHAT */
+.chat{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+width:65px;
+height:65px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:30px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Velorix</h1>
+<p>Ebooks • Motivation • Business</p>
+</header>
+
+<nav>
+<a onclick="show('home')">Accueil</a>
+<a onclick="show('ebooks')">Ebooks</a>
+<a onclick="show('mini')">Mini Ebook</a>
+<a onclick="show('admin')">Admin</a>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="page active">
+
+<div class="hero">
+
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
+
+<h2>Apprends • Gagne • Réussis 🚀</h2>
+
+<p>
+Velorix t’aide à développer ton business, ta mentalité et ta discipline avec des ebooks puissants.
+</p>
+
+<button class="offer-btn" onclick="show('ebooks')">
+🔥 Offre limitée - Voir les ebooks
+</button>
+
+</div>
+
+</div>
+
+<!-- EBOOKS -->
+<div id="ebooks" class="page">
+
+<h2 style="text-align:center;">📚 Ebooks</h2>
+
+<div class="cards">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a">
+<h3>Business Starter</h3>
+<p>Créer un business rentable</p>
+
+<div style="color:#aaa;margin-top:5px;font-size:14px;">
+🔥 Contenu exclusif + conseils pratiques
+</div>
+
+<span class="price">10$</span>
+
+<button onclick="buy('Business Starter','10$')">
+Acheter
+</button>
+
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1513258496099-48168024aec0">
+<h3>Mentalité Gagnant</h3>
+<p>Devenir discipliné et fort</p>
+
+<div style="color:#aaa;margin-top:5px;font-size:14px;">
+🔥 Contenu exclusif + conseils pratiques
+</div>
+
+<span class="price">7$</span>
+
+<button onclick="buy('Mentalité Gagnant','7$')">
+Acheter
+</button>
+
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1512820790803-83ca734da794">
+<h3>Histoires Inspirantes</h3>
+<p>Motivation et réussite</p>
+
+<div style="color:#aaa;margin-top:5px;font-size:14px;">
+🔥 Contenu exclusif + conseils pratiques
+</div>
+
+<span class="price">5$</span>
+
+<button onclick="buy('Histoires Inspirantes','5$')">
+Acheter
+</button>
+
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1455390582262-044cdead277a">
+<h3>Conseils Pratiques</h3>
+<p>Améliorer ta vie quotidienne</p>
+
+<div style="color:#aaa;margin-top:5px;font-size:14px;">
+🔥 Contenu exclusif + conseils pratiques
+</div>
+
+<span class="price">3$</span>
+
+<button onclick="buy('Conseils Pratiques','3$')">
+Acheter
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- MINI -->
+<div id="mini" class="page">
+
+<h2 style="text-align:center;">🆓 Mini Ebook</h2>
+
+<div id="list"></div>
+
+</div>
+
+<!-- ADMIN -->
+<div id="admin" class="page">
+
+<div style="max-width:500px;margin:auto;background:#1a1a1a;padding:20px;border-radius:15px;">
+
+<h3>Connexion Admin</h3>
+
+<input id="email" placeholder="Email">
+<input id="pass" type="password" placeholder="Mot de passe">
+
+<button onclick="login()">Connexion</button>
+
+<p style="color:#888;font-size:13px;margin-top:15px;">
+🔒 Utilise un mot de passe réservé uniquement à Velorix.
+</p>
+
+</div>
+
+<!-- PANEL -->
+<div id="panel" style="display:none;margin-top:20px;max-width:500px;margin:auto;">
+
+<!-- AJOUT MINI EBOOK -->
+<div style="background:#1a1a1a;padding:20px;border-radius:15px;">
+
+<h3>➕ Ajouter Mini Ebook</h3>
+
+<input id="title" placeholder="Titre">
+<input id="price" placeholder="Prix">
+<input id="image" placeholder="Image URL">
+<textarea id="text" placeholder="Extrait"></textarea>
+
+<button onclick="add()">
+Ajouter
+</button>
+
+</div>
+
+<!-- SOUS ADMIN -->
+<div class="sub-box">
+
+<h3>🛡 Sous-Admin</h3>
+
+<input id="subadmin" placeholder="Nom du sous-admin">
+
+<button onclick="addSubAdmin()">
+Ajouter Sous-Admin
+</button>
+
+<div id="subList"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CHAT -->
+<div class="chat" onclick="contact()">💬</div>
+
+<script>
+
+/* ADMIN */
+
+const ADMIN_EMAIL="timotheengalula4@gmail.com";
+const ADMIN_PASS="Velorix_2026_Admin";
+
+/* STORAGE */
+
+let data=JSON.parse(localStorage.getItem("extraits"))||[];
+let subs=JSON.parse(localStorage.getItem("subs"))||[];
+
+/* NAVIGATION */
+
+function show(p){
+
+document.querySelectorAll(".page").forEach(e=>{
+e.classList.remove("active");
+});
+
+document.getElementById(p).classList.add("active");
+
+}
+
+/* WHATSAPP */
+
+function buy(n,p){
+
+window.location.href=
+"https://wa.me/243812190474?text=Bonjour 👋 je veux acheter : "
++n+
+" ("+p+"). Pouvez-vous me donner les détails ?";
+
+}
+
+function contact(){
+window.location.href="https://wa.me/243812190474";
+}
+
+/* LOGIN */
+
+function login(){
+
+let e=document.getElementById("email").value;
+let p=document.getElementById("pass").value;
+
+if(e===ADMIN_EMAIL && p===ADMIN_PASS){
+
+document.getElementById("panel").style.display="block";
+
+alert("Admin connecté");
+
+}else{
+
+alert("Erreur");
+
+}
+
+}
+
+/* MINI EBOOK */
+
+function add(){
+
+data.push({
+title:title.value,
+price:price.value,
+image:image.value,
+text:text.value
+});
+
+localStorage.setItem(
+"extraits",
+JSON.stringify(data)
+);
+
+render();
+
+}
+
+/* MINI BUY */
+
+function buyMini(title){
+
+window.location.href=
+"https://wa.me/243812190474?text=Bonjour 👋 je veux l'ebook complet sur : "
++title;
+
+}
+
+/* RENDER MINI */
+
+function render(){
+
+let box=document.getElementById("list");
+
+box.innerHTML="";
+
+data.forEach(x=>{
+
+box.innerHTML+=`
+
+<div class="extrait">
+
+${x.image ? `<img src="${x.image}">` : ""}
+
+<h3>${x.title}</h3>
+
+<p>${x.text}</p>
+
+<div class="mini-price">
+💰 ${x.price || "Prix non défini"}
+</div>
+
+<button onclick="buyMini('${x.title}')">
+📩 Obtenir l'ebook complet
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+/* SOUS ADMIN */
+
+function addSubAdmin(){
+
+let name=document.getElementById("subadmin").value;
+
+if(name){
+
+subs.push(name);
+
+localStorage.setItem(
+"subs",
+JSON.stringify(subs)
+);
+
+renderSubs();
+
+document.getElementById("subadmin").value="";
+
+}
+
+}
+
+/* RENDER SUBS */
+
+function renderSubs(){
+
+let box=document.getElementById("subList");
+
+box.innerHTML="";
+
+subs.forEach(x=>{
+
+box.innerHTML+=`
+<div class="sub-item">
+👤 ${x}
+</div>
+`;
+
+});
+
+}
+
+render();
+renderSubs();
+
+</script>
+
+</body>
+</html>

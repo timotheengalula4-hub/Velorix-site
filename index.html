@@ -412,6 +412,7 @@ const ADMIN_PASS="Velorix_2026_Admin";
 
 let data=JSON.parse(localStorage.getItem("extraits"))||[];
 let subs=JSON.parse(localStorage.getItem("subs"))||[];
+let isAdmin=false;
 
 /* NAVIGATION */
 
@@ -450,6 +451,8 @@ let p=document.getElementById("pass").value;
 if(e===ADMIN_EMAIL && p===ADMIN_PASS){
 
 document.getElementById("panel").style.display="block";
+isAdmin=true;
+render();
 
 alert("Admin connecté");
 
@@ -519,6 +522,7 @@ ${x.image ? `<img src="${x.image}">` : ""}
 📩 Obtenir l'ebook complet
 </button>
 
+${isAdmin ? `
 <button onclick="deleteMiniBook(${data.indexOf(x)})"
 style="
 background:red;
@@ -533,6 +537,7 @@ cursor:pointer;
 ">
 🗑️ Supprimer
 </button>
+` : ""}
 
 </div>
 
